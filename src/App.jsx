@@ -1,15 +1,17 @@
-import './App.css'
 import {Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Footer from './components/Footer'
+import FormularioTarea from './components/FormularioTarea'
+import './App.css'
 
 function App() {
 
   return ( 
     <>
-      <Container className='py-4 '>
+      <Container className='py-4' id='main'>
         <h1 className='text-center text-white'>Lista de tareas </h1>
-      </Container> 
+        <FormularioTarea></FormularioTarea>
+      </Container>
       <Footer></Footer>
     </>     
   )
