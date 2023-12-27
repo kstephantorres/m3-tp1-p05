@@ -14,6 +14,8 @@ const FormularioTarea = () => {
         setListaTarea([...listaTarea,tarea.trim()])
     }
 
+    
+
     return (
         <section>
             <Form onSubmit={handleSubmit}>
@@ -29,7 +31,7 @@ const FormularioTarea = () => {
                     <Button variant="dark" className="ms-2" type="submit"> Agregar </Button>
                 </Form.Group> 
             </Form>
-            <ListaTarea></ListaTarea>
+            <ListaTarea listaTarea={listaTarea}></ListaTarea>
         </section>
     );
 };
