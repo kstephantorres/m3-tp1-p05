@@ -1,11 +1,12 @@
 import { Form, Button } from "react-bootstrap";
 import ListaTarea from './ListaTarea'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const FormularioTarea = () => {
     const [tarea, setTarea]= useState('');
     const listaTareaLS = JSON.parse(localStorage.getItem('keyTareas')) || []
     const [listaTarea, setListaTarea] =  useState(listaTareaLS)
+    const taskInputRef = useRef(null)
 
     // Se ejecuta dos veces solo en desarrollo
     useEffect(()=>{
@@ -15,10 +16,11 @@ const FormularioTarea = () => {
     // handle+algo nombre de funciones para el manejo de states 
     const handleSubmit =(e)=>{
         e.preventDefault()
-        // realizar algo similar al push tarea
+        // se realiza algo similar al push en listaTarea poeque no se puede modificar directamente este debido al state
         // operador spred ...
-        setListaTarea([...listaTarea,tarea.trim()])
+        !listaTarea.includes(tarea.toUpperCase()) && tarea.trim() !== "" && setListaTarea([...listaTarea,tarea.trim()])
         setTarea('')
+        taskInputRef.current && taskInputRef.current.focus()
     }
 
     const borrarTarea=(nombreTarea)=>{
@@ -36,8 +38,9 @@ const FormularioTarea = () => {
                         placeholder="Ej: Tarea 1" 
                         minLength={3} 
                         maxLength={80} 
-                        onChange={(e)=> setTarea(e.target.value)} 
+                        onChange={(e)=> setTarea(e.target.value.toUpperCase())} 
                         value={tarea}
+                        ref={taskInputRef}
                     />
                     <Button variant="dark" className="ms-2" type="submit"> Agregar </Button>
                 </Form.Group> 
