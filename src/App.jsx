@@ -1,8 +1,9 @@
+import './App.css'
 import {Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Footer from './components/Footer'
 import FormularioTarea from './components/FormularioTarea'
-import './App.css'
+
 
 function App() {
 
