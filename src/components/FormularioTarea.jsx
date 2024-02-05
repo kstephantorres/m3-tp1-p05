@@ -41,6 +41,7 @@ const FormularioTarea = () => {
                         onChange={(e)=> setTarea(e.target.value.toUpperCase())} 
                         value={tarea}
                         ref={taskInputRef}
+                        required
                     />
                     <Button variant="dark" className="ms-2" type="submit"> Agregar </Button>
                 </Form.Group> 
